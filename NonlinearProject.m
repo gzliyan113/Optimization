@@ -1,4 +1,4 @@
-%% Probelm1.Part(a).Rosenbrock function minimization
+% % Probelm1.Part(a).Rosenbrock function minimization
 % %Gradient Descent to Rosenbrock
 % tic
 % n=2000;
@@ -14,6 +14,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: Steepest Descent-Rosenbrock');
@@ -21,10 +22,10 @@
 % ylabel('function value');
 % 
 % sol;
-% num
+% num;
 % toc
-
-
+% 
+% 
 % %Quasi Newton to Rosenbrock-DFP
 % tic
 % n=2000;
@@ -39,17 +40,18 @@
 % 
 % % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: QuasiNewton(DFP)-Rosenbrock');
 % xlabel('iteration num');
 % ylabel('function value');
-
+% 
 % toc
-
-
-%Quasi Newton to Rosenbrock-BFGS(this is slow, need tuning, low speed seems to have large part
-%with the BFGS updata, very slow)
+% 
+% 
+% % Quasi Newton to Rosenbrock-BFGS(the parameter of line search matters alot,
+% % especially the search upper bound)
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -58,11 +60,13 @@
 %     x0(2*i)=1;
 % end
 % x_star=ones(n,1);
-% [sol, value_hist]=BFGS(@rosenbrock,n,x0,x_star,10^(-6),0.1,0.11,20,40);
+% 
+% [sol, value_hist]=BFGS(@rosenbrock,n,x0,x_star,10^(-6),0.01,0.02,2,40);
 % sol;
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: QuasiNewton(BFGS)-Rosenbrock');
@@ -70,8 +74,8 @@
 % ylabel('function value');
 % 
 % toc
-
-%L-BFGS to Rosenbrock
+% 
+% % L-BFGS to Rosenbrock
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -85,6 +89,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: QuasiNewton(LBFGS)-Rosenbrock');
@@ -92,9 +97,9 @@
 % ylabel('function value');
 % 
 % toc
-
-
-%CG-Fletech-Reeves to Rosenbrock
+% 
+% 
+% % CG-Fletech-Reeves to Rosenbrock
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -108,6 +113,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: Conjugate Gradient(FR)-Rosenbrock');
@@ -115,8 +121,8 @@
 % ylabel('function value');
 % 
 % toc
-
-%CG-Polak-Ribiere to Rosenbrock
+% 
+% % CG-Polak-Ribiere to Rosenbrock
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -130,6 +136,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: Conjugate Gradient(PR)-Rosenbrock');
@@ -138,8 +145,8 @@
 % 
 % toc
 
-%% Problem1.Part(b).Extended Powell Singular Function Minimization
-%Gradient Descent to ExPowellSingular
+% % Problem1.Part(b).Extended Powell Singular Function Minimization
+% % Gradient Descent to ExPowellSingular
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -158,6 +165,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: Steepest Descent-ExPowellSingular');
@@ -165,9 +173,9 @@
 % ylabel('function value');
 % 
 % toc
-
-
-%Quasi Newton to ExPowellSingular-DFP
+% 
+% 
+% % Quasi Newton to ExPowellSingular-DFP
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -184,6 +192,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: QuasiNewton(DFP)-ExPowellSingular');
@@ -191,9 +200,9 @@
 % ylabel('function value');
 % 
 % toc
-
-
-%Quasi Newton to ExPowellSingular-BFGS
+% 
+% 
+% % Quasi Newton to ExPowellSingular-BFGS
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -210,6 +219,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: QuasiNewton(BFGS)-ExPowellSingular');
@@ -217,8 +227,8 @@
 % ylabel('function value');
 % 
 % toc
-
-%L-BFGS to ExPowellSingular
+% 
+% % L-BFGS to ExPowellSingular
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -235,6 +245,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: QuasiNewton(LBFGS)-ExPowellSingular');
@@ -242,9 +253,9 @@
 % ylabel('function value');
 % 
 % toc
-
-
-%CG-Fletech-Reeves to ExPowellSingular
+% 
+% 
+% % CG-Fletech-Reeves to ExPowellSingular
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -260,6 +271,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: ConjugateGradient(FR)-ExPowellSingular');
@@ -268,8 +280,8 @@
 % 
 % sol;
 % toc
-
-%CG-Polak-Ribiere to ExPowellSingular
+% 
+% % CG-Polak-Ribiere to ExPowellSingular
 % tic
 % n=2000;
 % x0=zeros(n,1);
@@ -286,6 +298,7 @@
 % 
 % %Plot value against iteration
 % x=1:length(value_hist);
+% figure
 % plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 % %axis([0,length(x) -0.5*10^6 10^7]);
 % title('Function value at each iteration: ConjugateGradient(PR)-ExPowellSingular');
@@ -293,9 +306,9 @@
 % ylabel('function value');
 % 
 % toc
-
-
-%% Problem2.Nesterov's Method-Function 1-(a)Unconstrained case
+% 
+% 
+% % Problem2.Nesterov's Method-Function 1-(a)Unconstrained case
 rng(1);
 n=10000;
 delta=0.05;
@@ -319,54 +332,56 @@ x0=100*rand(n,1);
 tic
 
 [sol, value_hist, grad_hist]=Nesterov_Unconstrained(Q,b,0.05,4.05,x0,10^(-4));
-
+value_hist1=value_hist;
 x=1:length(value_hist);
-plot(x,grad_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
+figure
+plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
 %axis([0,length(x) -0.5*10^6 10^7]);
-title('Grad norm at each iteration: Unconstrained Nesterovs''Method');
+title('Function value at each iteration: Unconstrained Nesterovs''Method');
 xlabel('iteration num');
 ylabel('function value');
 % f_star=-b'*inv(Q)*b/2
-grad_hist
+grad_hist;
 
 toc
 
 
-%% Nesterov's Method-Function 1-(b)Constrained case
-% rng(1);
-% n=10000;
-% delta=0.05;
-% Q=2*eye(n);
-% for i=1:n
-%     if i<n
-%         Q(i,i+1)=-1;
-%     end
-%     if i>1
-%         Q(i,i-1)=-1;
-%     end
-%     
-% end
-% Q=Q+delta*eye(n);
-% b=randn(n,1);
-% 
-% % the objective have L=4.05 and u=0.05;
-% % randomly choose x0
-% x0=100*rand(n,1);
-% 
-% tic
-% 
-% [sol, value_hist]=Nesterov_Constrained(n,Q,b,0.05,4.05,x0);
-% 
-% x=1:length(value_hist);
-% plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
-% %axis([0,length(x) -0.5*10^6 10^7]);
-% title('Function Value at each iteration: Constrained Nesterov''s Method');
-% xlabel('iteration num');
-% ylabel('function value');
-% 
-% % f_star=-b'*inv(Q)*b/2
-% % sol_star=inv(Q)*b;
-% 
-% toc
-% 
-% 
+% % Nesterov's Method-Function 1-(b)Constrained case
+rng(1);
+n=10000;
+delta=0.05;
+Q=2*eye(n);
+for i=1:n
+    if i<n
+        Q(i,i+1)=-1;
+    end
+    if i>1
+        Q(i,i-1)=-1;
+    end
+    
+end
+Q=Q+delta*eye(n);
+b=randn(n,1);
+
+% the objective have L=4.05 and u=0.05;
+% randomly choose x0
+x0=100*rand(n,1);
+
+tic
+
+[sol, value_hist, hist]=Nesterov_Constrained(n,Q,b,0.05,4.05,x0);
+value_hist2=value_hist;
+x=1:length(value_hist);
+figure
+plot(x,value_hist,'LineWidth',0.75,'Marker','+','MarkerSize',3);
+%axis([0,length(x) -0.5*10^6 10^7]);
+title('Function Value at each iteration: Constrained Nesterov''s Method');
+xlabel('iteration num');
+ylabel('function value');
+
+% f_star=-b'*inv(Q)*b/2
+% sol_star=inv(Q)*b;
+
+toc
+
+

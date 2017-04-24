@@ -12,19 +12,19 @@ function [sol,value_hist, grad_hist]=Nesterov_Unconstrained(Q,b,u,l,x0,epsilon)
     at_n=at_o;
     q=u/l;
     
-    iterates_val=xt_n'*Q*xt_n/2-b'*xt_n
+    iterates_val=xt_n'*Q*xt_n/2-b'*xt_n;
     value_hist=[iterates_val];
     grad_hist=[norm(iterates_grad)];
     
     while norm(iterates_grad)/(norm(initial_grad)+1)>epsilon
           grad=Q*yt-b;
           xt_n=yt-1/l*grad;
-          at_n=(q-at_o^2+sqrt(q+3*at_o^2))/2;
+          at_n=(q-at_o^2+sqrt((at_o^2-q)^2+4*at_o^2))/2;
           beta=(at_o*(1-at_o))/(at_o^2+at_n);
           yt=xt_n+beta*(xt_n-xt_o);
           
           iterates_grad=Q*xt_n-b;
-          iterates_val=xt_n'*Q*xt_n/2-b'*xt_n
+          iterates_val=xt_n'*Q*xt_n/2-b'*xt_n;
           value_hist=[value_hist iterates_val];
           grad_hist=[grad_hist norm(iterates_grad)];
           

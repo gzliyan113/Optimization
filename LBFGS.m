@@ -16,6 +16,7 @@ function [sol,value_hist]=LBFGS(func,n,x0,l,s_star,epsilon,c1,c2,ubound,maxit)
             [iterates_gap grad]=func(n,xt);
             dt=-D0*grad;
             [xt iterates_gap ngrad step inform]=cvsrch(func,n,xt,iterates_gap,grad,dt,ubound,c1,c2,0.0001,0,ubound,maxit);
+            
         else
             %Now formulating descending direction
             [iterates_gap grad]=func(n,xt);

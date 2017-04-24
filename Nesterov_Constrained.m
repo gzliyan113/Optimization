@@ -1,4 +1,4 @@
-function [sol, value_hist]=Nesterov_Constrained(n,Q,b,u,l,x0)
+function [sol, value_hist, hist]=Nesterov_Constrained(n,Q,b,u,l,x0)
     %We follow constance step scheme III on page 84 of Introductory
     %Lectures on Convex Programming
     
@@ -33,11 +33,11 @@ function [sol, value_hist]=Nesterov_Constrained(n,Q,b,u,l,x0)
           %projection
           xt_n(xt_n<0)=0;
                               
-          at_n=(q-at_o^2+sqrt(q+3*at_o^2))/2;
+          at_n=(q-at_o^2+sqrt((at_o^2-q)^2+4*at_o^2))/2;
           beta=(at_o*(1-at_o))/(at_o^2+at_n);
           yt=xt_n+beta*(xt_n-xt_o);
           
-          val=xt_n'*Q*xt_n/2-b'*xt_n
+          val=xt_n'*Q*xt_n/2-b'*xt_n;
           value_hist=[value_hist val];
          
           xt_o=xt_n;
@@ -47,7 +47,7 @@ function [sol, value_hist]=Nesterov_Constrained(n,Q,b,u,l,x0)
           history(:,3)=xt_o;
                     
     end
-   
+    hist=history;
     sol=xt_o;
 end
 

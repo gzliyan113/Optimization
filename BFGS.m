@@ -8,12 +8,15 @@ function [solution, value_hist]=BFGS(func,n,x0,x_star,epsilon,c1,c2,ubound,maxit
     while iterates_gap/initial_gap>epsilon
         [iterates_gap grad]=func(n,xt);
        
-        %Use line serach satisyinf wolfe condition
+        %Use line serach satisying wolfe condition
         dt=-Dt*grad;
-        [xt iterates_gap ngrad step inform]=cvsrch(func,n,xt,iterates_gap,grad,dt,ubound,c1,c2,0.0001,0,ubound,maxit);
+        [xt iterates_gap ngrad step inform]=cvsrch(func,n,xt,iterates_gap,grad,dt,ubound,c1,c2,0.0001,0.0001,ubound,maxit);
         pt=step*dt;
         
         value_hist=[value_hist iterates_gap];
+%         iterates_gap?
+%         inform?
+%         step
         
         %We used Armijo rule to determine stepsize;
 %         beta=0.5;
@@ -39,7 +42,7 @@ function [solution, value_hist]=BFGS(func,n,x0,x_star,epsilon,c1,c2,ubound,maxit
 %         pt=eta*dt;
 %         xt=xt+pt;
         
-        %now updating matrix Dt according to DFP rule
+        %now updating matrix Dt according to BFGS rule
         
         qt=ngrad-grad;
         tau_t=(qt)'*Dt*qt;
